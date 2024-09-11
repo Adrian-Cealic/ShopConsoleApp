@@ -1,4 +1,7 @@
+//abstract class
 #include"Cart.h"
+
+//libraries
 #include<iostream>
 
 using namespace std;
@@ -20,8 +23,14 @@ void Cart::viewCart()const {
 	for (int i = 0;i < count;i++) {
 		cout << items[i].product.getName() << "-" << items[i].qty << " units\n";
 	}
-}
 
+	int totalPrice = 0;
+	cout << "\n---TOTAL PRICE----\n";
+	for (int i = 0;i < count;i++) {
+		totalPrice += items[i].product.getPrice() * items[i].qty;
+	}
+	cout << totalPrice;
+}
 
 void Cart::clearCart() {
 	count = 0;

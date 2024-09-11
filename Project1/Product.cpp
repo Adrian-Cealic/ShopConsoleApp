@@ -1,8 +1,10 @@
+//imports
 #include "Product.h"
+//libraries
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
+//constants
 const int PRODUCT_COUNT = 10;
 Product products[PRODUCT_COUNT];
 
@@ -11,18 +13,18 @@ Product::Product(int id, string name, int price, int qty) :id(id), name(name), p
 // Destructor
 Product::~Product() {}
 
+//initialize products
 void initProducts() {
-    for (int i = 0;i < PRODUCT_COUNT;i++) {
-        products[i] = Product(i + 1, "Product " + to_string(i + 1), 100 + i * 4, 10);
+    string fragranceNames[PRODUCT_COUNT] = {
+        "Dior Sauvage", "Chanel No. 5", "YSL Black Opium", "Gucci Bloom", "Tom Ford Oud Wood",
+        "Creed Aventus", "Versace Eros", "Armani Acqua Di Gio", "Prada Luna Rossa", "Jo Malone Peony & Blush"
+    };
+
+    for (int i = 0; i < PRODUCT_COUNT; i++) {
+        products[i] = Product(i + 1, fragranceNames[i], 100 + i * 20, 10);
     }
 }
 
-// toString method
-void Product::toString() {
-    cout << left << setw(15) << name
-        << right << setw(10) << price << "$"
-        << right << setw(10) << qty << " units" << endl;
-}
 
 // Setters
 void Product::setName(string name) { this->name = name; }
@@ -35,11 +37,18 @@ const int Product::getPrice() const { return price; }
 const int Product::getQty() const { return qty; }
 
 // Stream operator overloads
-ostream& operator<<(ostream& COUT, Product& p) {
-    COUT << p.name << " " << p.price << "$ " << p.qty << " units" << endl;
+//output overload
+ostream& operator<<(ostream& COUT,Product& p) {
+    COUT << "==========================" << endl;
+    COUT << "    Product Details" << endl;
+    COUT << "==========================" << endl;
+    COUT << "Name       : " << p.name << endl;
+    COUT << "Price      : $" << p.price << endl;
+    COUT << "Quantity   : " << p.qty << " units" << endl;
+    COUT << "==========================" << endl;
     return COUT;
 }
-
+//input overload
 istream& operator>>(istream& IN, Product& p) {
     cout << "Nume produs: "; getline(IN, p.name);
     cout << "Pret produs: "; IN >> p.price;

@@ -1,5 +1,7 @@
+//imports
 #include "Menu.h"
 #include "Cart.h"
+//libraries
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -8,15 +10,17 @@
 using namespace std;
 
 Cart cart;
-
+//view product
 void viewProduct() {
     for (int i = 0;i < PRODUCT_COUNT;i++) {
         cout << products[i];
     }
 }
+//view cart
 void viewCart() {
     cart.viewCart();
 }
+//buy product
 void buyProduct() {
     int id, qty;
     cout << "Enter product id to buy: ";
@@ -30,7 +34,6 @@ void buyProduct() {
             if (products[i].getQty() >= qty) {
                 cart.addProduct(products[i], qty);
                 products[i].setQty(products[i].getQty() - qty);
-                cout << "Product added to cart\n";
             }
             else {
                 cout << "Not enough stock available\n";
@@ -44,9 +47,15 @@ void buyProduct() {
     }
 }
 
+//clear cart
+void static clearCart() {
+    cart.clearCart();
+    cout << "Thank you for buying!\n";
+}
 
 
-void menu() {
+//show menu
+void menu(){
 
     initProducts();
 
@@ -56,7 +65,8 @@ void menu() {
         cout << "1. View Products\n";
         cout << "2. Buy Product\n";
         cout << "3. View Cart\n";
-        cout << "4. Exit\n";
+        cout << "4. Go to checkout\n";
+        cout << "5. Exit\n";
         cout << "Alege o optiune:\n ";
 
         switch (_getch()) {
@@ -73,6 +83,9 @@ void menu() {
             viewCart();
             break;
         case '4':
+            clearCart();
+            break;  
+        case '5':
             exit(0);
             break;
         default:
