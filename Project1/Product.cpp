@@ -26,6 +26,7 @@ void initProducts() {
 }
 
 
+
 // Setters
 void Product::setName(string name) { this->name = name; }
 void Product::setPrice(int price) { this->price = price; }
@@ -49,10 +50,10 @@ ostream& operator<<(ostream& COUT,Product& p) {
     return COUT;
 }
 //input overload
-istream& operator>>(istream& IN, Product& p) {
-    cout << "Nume produs: "; getline(IN, p.name);
-    cout << "Pret produs: "; IN >> p.price;
-    cout << "Cantitatea produs: "; IN >> p.qty;
-    IN.ignore();
-    return IN;
-}
+//istream& operator>>(istream& IN, Product& p) {
+//    cout << "Nume produs: "; getline(IN, p.name);
+//    cout << "Pret produs: "; IN >> p.price;
+//    cout << "Cantitatea produs: "; IN >> p.qty;
+//    IN.ignore();
+//    return IN;
+//}

@@ -5,6 +5,12 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
+#include <string>
+#include <regex>
+#include <limits>
+#include <stdexcept>
+
+
 
 //namespace
 using namespace std;
@@ -20,13 +26,60 @@ void viewProduct() {
 void viewCart() {
     cart.viewCart();
 }
+
+bool isValidNonNegativeInteger(const string& input) {
+    regex integerPattern("^\\d+$"); 
+    return regex_match(input, integerPattern);
+}
 //buy product
 void buyProduct() {
+
+    string input;
     int id, qty;
-    cout << "Enter product id to buy: ";
-    cin >> id;
+    regex integerPattern("^\\d+$");
+
+   cout << "Enter product id to buy: ";
+   getline(cin, input);
+
+    if (isValidNonNegativeInteger(input)) {
+        try {
+            id = stoi(input); 
+        }
+        catch (const out_of_range& e) {
+            cout << "Product ID out of range. Please enter a valid product ID.\n";
+            //cout << e.what();
+            return; 
+        }
+        catch (const invalid_argument& e) { 
+            cout << "Invalid input for product ID. Please enter a valid integer.\n";
+            return; 
+        }
+    }
+    else {
+        cout << "Invalid input. Please enter a valid product ID.\n";
+        return; 
+    }
+
     cout << "Enter quantity: ";
-    cin >> qty;
+    getline(cin, input);
+
+    if (isValidNonNegativeInteger(input)) {
+        try {
+            qty = stoi(input);
+        }
+        catch (const out_of_range& e) {
+            cout << "Quantity out of range. Please enter a valid quantity.\n";
+            return;
+        }
+        catch (const invalid_argument& e) {
+            cout << "Invalid input for quantity. Please enter a valid integer.\n";
+            return; 
+        }
+    }
+    else {
+        cout << "Invalid input. Please enter a valid quantity.\n";
+        return;
+    }
 
     bool productFound = false;
     for (int i = 0; i < PRODUCT_COUNT; i++) {
