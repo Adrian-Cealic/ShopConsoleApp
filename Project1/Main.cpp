@@ -1,13 +1,17 @@
 //libraries
 #include<iostream>
+#include<cstdlib>
+#include <chrono>
+#include <thread>
+#include <conio.h>
 //imports
 #include"Menu.h"
-
 using namespace std;
 
 int main() {
-
+	system("Color 4E");
 	menu();
+
 
 	return 0;
 }

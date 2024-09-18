@@ -46,14 +46,6 @@ ostream& operator<<(ostream& COUT,Product& p) {
     COUT << "Name       : " << p.name << endl;
     COUT << "Price      : $" << p.price << endl;
     COUT << "Quantity   : " << p.qty << " units" << endl;
-    COUT << "==========================" << endl;
+    COUT << "==========================\n" << endl;
     return COUT;
 }
-//input overload
-//istream& operator>>(istream& IN, Product& p) {
-//    cout << "Nume produs: "; getline(IN, p.name);
-//    cout << "Pret produs: "; IN >> p.price;
-//    cout << "Cantitatea produs: "; IN >> p.qty;
-//    IN.ignore();
-//    return IN;
-//}

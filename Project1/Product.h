@@ -21,9 +21,6 @@ public:
     Product(int id = 0, string name = "", int price = 0, int qty = 0);
     ~Product();
 
-    // toString method
-    void toString();
-
     // Setters and Getters
     void setName(string name);
     void setPrice(int price);
@@ -36,7 +33,6 @@ public:
 
     // Friend function declarations for stream operators
     friend ostream& operator<<(ostream& OUT, Product& p);
-    friend istream& operator>>(istream& IN, Product& p);
 };
 void initProducts();
 

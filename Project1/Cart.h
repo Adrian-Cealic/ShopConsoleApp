@@ -1,10 +1,12 @@
 #pragma once
 //imports
 #include"Product.h"
+#include<string>
 
 #ifndef CART_H
 #define CART_H
 
+const int FREE_SHIPPING = 150;
 //namespace
 using namespace std;
 
@@ -19,11 +21,13 @@ public:
 class Cart {
 private:
     CartItem items[100];
-    int count;
+    int itemCount;
 public:
-    Cart() :count(0) {}
+    Cart() :itemCount(0) {}
+    int getCount()const;
     void addProduct(const Product& p, int qty);
     void viewCart()const;
     void clearCart();
+    float totalPrice()const;
 };
 #endif
